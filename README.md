@@ -14,7 +14,13 @@ Copy the `.env.example` file and rename it to `.env`. Fill in the required envir
 
 ### Production Mode Setup
 
-1. Build and start the project using Docker Compose:
+1. Create a Docker network:
+
+   ```bash
+   docker network create shared_network
+   ```
+
+2. Build and start the project using Docker Compose:
    ```bash
    docker compose -f docker-compose.yaml up -d --build --force-recreate
    ```
@@ -46,6 +52,7 @@ Copy the `.env.example` file and rename it to `.env`. Fill in the required envir
    ```
 
 5. Start the project in development mode:
+
    ```bash
    yarn start:dev
    ```
@@ -88,6 +95,7 @@ Copy the `.env.example` file and rename it to `.env`. Fill in the required envir
    ```
 
 6. Install Docker and related tools:
+
    ```bash
    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
    ```
