@@ -30,7 +30,7 @@ export class UserService {
     return newUser;
   }
 
-  async update(id: number, user: any) {
+  async update(id: number, user: Prisma.UserUpdateInput) {
     const updatedUser = await prisma.user.update({
       where: {
         id,

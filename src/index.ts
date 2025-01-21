@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use(logger);
 
-app.use("/api", router);
+app.use("/", router);
 
 // Handle undefined routes
 app.use((_: Request, __: Response, next: NextFunction) => {
