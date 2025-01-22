@@ -12,6 +12,7 @@ export class TaskSchema {
     body: Joi.object({
       title: Joi.string(),
       color: Joi.string(),
+      completed: Joi.boolean(),
     }),
     params: Joi.object({
       id: Joi.number().required(),
