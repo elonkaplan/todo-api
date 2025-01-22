@@ -10,14 +10,14 @@ export class TaskSchema {
   create = {
     body: Joi.object({
       title: Joi.string().required(),
-      color: Joi.string().optional(),
+      color: [Joi.string().optional(), Joi.allow(null)],
     }),
   };
 
   update = {
     body: Joi.object({
       title: Joi.string(),
-      color: Joi.string(),
+      color: [Joi.string().optional(), Joi.allow(null)],
       completed: Joi.boolean(),
     }),
     params: Joi.object({
