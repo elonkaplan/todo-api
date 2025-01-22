@@ -36,10 +36,6 @@ authRouter.post(
   controllerWrapper<ERequestType.Authenticated>(authController.logout)
 );
 
-console.log(config.auth.refreshTokenSecret, "config.auth.refreshTokenSecret");
-
-console.log(config.auth.accessTokenSecret, "config.auth.accessTokenSecret");
-
 authRouter.post(
   "/refresh",
   auth(config.auth.refreshTokenSecret),

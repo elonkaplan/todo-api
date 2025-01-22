@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 
+import { BadRequestException } from "../helpers/exceptions";
 import { Schema } from "joi";
 
 export const validator = (
@@ -11,7 +12,7 @@ export const validator = (
 
     if (error) {
       const errors = error.details.map((detail) => detail.message);
-      res.status(400).json({ success: false, errors });
+      next(new BadRequestException(errors.join(", ")));
       return;
     }
 

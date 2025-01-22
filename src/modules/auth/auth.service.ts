@@ -17,8 +17,6 @@ export class AuthService {
 
     const isPasswordValid = compareSync(password, user.password);
 
-    console.log(isPasswordValid);
-
     if (!isPasswordValid) {
       throw new UnauthorizedException("Invalid password");
     }
