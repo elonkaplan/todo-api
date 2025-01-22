@@ -1,4 +1,3 @@
-// errorHandler.ts
 import { NextFunction, Request, Response } from "express";
 
 import { AppError } from "../helpers/exceptions";

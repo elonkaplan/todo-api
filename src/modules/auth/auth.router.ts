@@ -21,7 +21,7 @@ authRouter.post(
 authRouter.post(
   "/register",
   validator(authSchema.register.body),
-  controllerWrapper(authController.register)
+  controllerWrapper(authController.register, "Username already exists")
 );
 
 authRouter.get(

@@ -5,7 +5,8 @@ import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 
 export const controllerWrapper =
   <RequestType = ERequestType.Unauthenticated>(
-    controller: Controller<RequestType>
+    controller: Controller<RequestType>,
+    conflictErrorMessage?: string
   ): Controller =>
   async (req, res, next) => {
     try {
@@ -13,7 +14,11 @@ export const controllerWrapper =
     } catch (error) {
       if (error instanceof PrismaClientKnownRequestError) {
         if (error.code === "P2002") {
-          next(new ConflictException("Resource already exists"));
+          next(
+            new ConflictException(
+              conflictErrorMessage || "Resource already exists"
+            )
+          );
 
           return;
         }
