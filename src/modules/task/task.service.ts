@@ -20,6 +20,16 @@ export class TaskService {
     });
   }
 
+  async getTask(id: number, userId: number) {
+    const task = await this.getByIdAndUserId(id, userId);
+
+    if (!task) {
+      throw new NotFoundException("Task not found");
+    }
+
+    return task;
+  }
+
   async create(task: Prisma.TaskCreateInput) {
     return prisma.task.create({
       data: task,

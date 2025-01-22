@@ -18,6 +18,13 @@ taskRouter.get(
   controllerWrapper<ERequestType.Authenticated>(taskController.getTasks)
 );
 
+taskRouter.get(
+  "/:id",
+  auth(config.auth.accessTokenSecret),
+  validator(taskSchema.get.params, "params"),
+  controllerWrapper<ERequestType.Authenticated>(taskController.getTask)
+);
+
 taskRouter.post(
   "/",
   auth(config.auth.accessTokenSecret),

@@ -9,6 +9,12 @@ export class TaskController {
     res.send(await this.taskService.getByUserId(req.user.id));
   };
 
+  getTask: Controller<ERequestType.Authenticated> = async (req, res) => {
+    res.send(
+      await this.taskService.getTask(Number(req.params.id), req.user.id)
+    );
+  };
+
   createTask: Controller<ERequestType.Authenticated> = async (req, res) => {
     res.send(
       await this.taskService.create({ ...req.body, userId: req.user.id })

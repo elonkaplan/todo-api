@@ -1,6 +1,12 @@
 import Joi from "joi";
 
 export class TaskSchema {
+  get = {
+    params: Joi.object({
+      id: Joi.number().required(),
+    }),
+  };
+
   create = {
     body: Joi.object({
       title: Joi.string().required(),
